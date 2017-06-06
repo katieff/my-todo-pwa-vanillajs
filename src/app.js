@@ -38,7 +38,7 @@
   };
   
   app.saveTodo = function() {
-    var todo = {name:app.todo.value, state: 'Open'};
+    var todo = {name:app.todo.value, state: false};
     app.todos[app.todo.value] = todo;
 
     localStorage.setItem('todos', JSON.stringify(app.todos));
@@ -55,9 +55,13 @@
     }
   };
 
-  app.doneTodo = function(index, todoCard) {
-    app.todos[index].state = "Done";
-    todoCard.querySelector('.state').textContent = "Done";
+  app.toggleTodo = function(index, todoCard) {
+    app.todos[index].state = !app.todos[index].state;
+    if(app.todos[index].state) {
+      todoCard.querySelector(".name").classList.add('crossed');
+    } else {
+      todoCard.querySelector(".name").classList.remove('crossed');
+    }
     localStorage.setItem("todos", JSON.stringify(app.todos));
   };
 
@@ -66,13 +70,19 @@
         var todoCard = app.todoTemplate.cloneNode(true);
         todoCard.classList.remove('todoTemplate');
         todoCard.querySelector('.name').textContent = todo.name;
-        todoCard.querySelector('.state').textContent = todo.state;
+        if(todo.state) {
+          todoCard.querySelector(".name").classList.add('crossed');
+        }
+        todoCard.querySelector('.chkState').checked = todo.state;
         todoCard.removeAttribute('hidden');
         todoCard.querySelector('.btnDel').addEventListener('click', function() {
             app.deleteTodo(index, todoCard)
         });
-        todoCard.querySelector('.btnDone').addEventListener('click', function() {
-          app.doneTodo(index, todoCard)
+        todoCard.querySelector('.chkState').setAttribute("id", "todo_" + todo.name);
+        todoCard.querySelector('.chkStateLabel').setAttribute("for", "todo_" + todo.name);
+
+        todoCard.querySelector('.chkState').addEventListener('click', function() {
+          app.toggleTodo(index, todoCard)
         });
         app.container.appendChild(todoCard);
       }

@@ -6,30 +6,50 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Todo List PWA</title>
+
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <header>
-            <h1>ToDo List</h1>
-            <button id="butAdd">Add</button>
+        <header class="header">
+            <h1 class="header_title">ToDo List</h1>
+            <button class="headerBtn" id="butAdd"></button>
         </header>
 
         <div class="todo-dlg-container" hidden>
-            <div>Add Todo</div>
-            <div>
-                <label for="inpTodo">Todo</label>
-                <input id="inpTodo" type="text" />
-                <button id="btnSaveTodo">Save</button>
-                <button id="btnCancel">Cancel</button>
+            <div class="dlg">
+                <div>
+                    <h1 class="header_title">Add Todo</h1>
+                    <table>
+                        <tr>
+                            <td>
+                                <input id="inpTodo" type="text" placeholder="enter todo here ..."/></br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="btnSaveTodo">Save</button>
+                                <button id="btnCancel">Cancel</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         
-        <main class="main">
-            <div class="todoTemplate" hidden>
-                <div class="name"></div>
-                <div class="state"></div>
-                <button class="btnDone">Done</button>
-                <button class="btnDel">Delete</button>
-            </div>
+        <main>
+            <h1>Todos</h1>
+            <table>
+                <tbody class="main">
+                    <tr class="todoTemplate todo" hidden>
+                        <td class="name"></td>
+                        <td class="state">
+                            <input class="chkState" type="checkbox" />
+                            <label class="chkStateLabel"></label>
+                        </td>
+                        <td><button class="btnDel"></button></td>
+                    </tr>
+                </tbody>
+            </table>
         </main>
 
 

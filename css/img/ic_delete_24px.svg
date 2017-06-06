@@ -1,0 +1,5 @@
+
+<svg fill="greenyellow" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <line x1="7" y1="7" x2="17" y2="17" style="stroke-width:3;stroke:greenyellow" />
+    <line x1="7" y1="17" x2="17" y2="7" style="stroke-width:3;stroke:greenyellow" />
+</svg>
